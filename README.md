@@ -14,5 +14,10 @@ conda install virseqimprover
 
 ## Input
 
-A viral scaffold/contig and the read sample from which the input scaffold is assembled.
-The reads can be paired-end reads or single-end reads. For paired-end reads, two separate read files (.fastq) are needed.
+A viral scaffold/contig (.fasta) and the read sample (.fastq) from which the input scaffold is assembled.
+
+The reads can be paired-end reads or single-end reads. For paired-end reads, two separate read files are needed.
+
+## Usage
+
+## Output
