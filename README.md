@@ -21,3 +21,15 @@ The reads can be paired-end reads or single-end reads. For paired-end reads, two
 ## Usage
 
 ## Output
+
+The ouput folders and files will be generated in the output directory folder you specify (the same directory of your input files by default if not specified).
+
+The final output file -- pilon_out.fasta is the final improved scaffold of the original scaffold.
+
+# Annotation
+
+After applying VirSeqImprover to the viral scaffold, use eggNOG-mapper (http://eggnog-mapper.embl.de/) to annotate viral genes. On the tool website, choose "Metagenomic" as the data kind, Prodigal as the gene prediction method, upload the improved scaffold file, and choose Viruses - 10239 as the taxonomic scope.
+
+When the job is done, download the out.emapper.decorated.gff file, rename it as decorated.gff.
+
+Use decorated.gff and pilon_out.fasta to generate the annotation sheets by running ann.sh.
