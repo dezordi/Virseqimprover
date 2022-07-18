@@ -1,9 +1,9 @@
 package:
   name: "virseqimprover"
-  version: "1.1"
+  version: "1.0"
 
 source:
-  git_rev: v1.1
+  git_rev: v1.0
   git_url: https://github.com/haoqiusong/VirSeqImprover
 
 requirements:
