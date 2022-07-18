@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="virseqimprover",
-    version="1.0",
+    version="1.2",
     author="Haoqiu Song",
     author_email="haoqiu@vt.edu",
     description="An integrated pipeline for error-correction, extension, and annotation of viral scaffolds.",
