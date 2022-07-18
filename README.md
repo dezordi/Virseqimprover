@@ -9,6 +9,16 @@ Use conda install to install VirSeqImprover.
 ```bash
 conda install virseqimprover --channel haoqiusong
 ```
+This will help you install all the dependent tools (e.g. SPAdes, Bowtie2, etc.) and solve all of the potential dependency problems you could have.
+
+In case you would meet a problem for Samtools ("samtools: error while loading shared libraries: libcrypto.so.1.0.0: cannot open shared object file: No such file or directory"), use the following commands to solve it:
+
+```bash
+cd anaconda3/envs/<your_environment>/lib
+ll libcrypto.so
+(You might see "libcrypto.so -> libcrypto.so.1.1")
+ln -s libcrypto.so.1.1 libcrypto.so.1.0.0
+```
 
 # Run VirSeqImprover
 
@@ -22,6 +32,7 @@ The reads can be paired-end reads or single-end reads. For paired-end reads, two
 
 Command line example:
 ```bash
+python virseqimprover.py
 -1 /home/VirSeqImprover/input/read1.fastq -2 /home/VirSeqImprover/input/read2.fastq -scaffold /home/VirSeqImprover/input/scaffold.fasta -o /home/VirSeqImprover/output
 ```
 For all the files and directory, full paths are recommended in the input.
