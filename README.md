@@ -51,12 +51,18 @@ python ann.py
 
 # Possible problems and solutions
 
-1. In case conda can not solve all the dependency issues, you can create a new environment using ```conda create -n <new_environment_name> ``` and install again.
+1. In case conda can not solve all the dependency issues, try to create a new environment and install again.
+Command lines:
+```bash
+conda create -n <new_environment_name>
+conda activate <new_environment_name>
+conda install virseqimprover --channel haoqiusong
+```
 
 2. In case you meet a problem for Samtools ("samtools: error while loading shared libraries: libcrypto.so.1.0.0: cannot open shared object file: No such file or directory"), use the following command lines to solve it:
 
 ```bash
 cd anaconda3/envs/<environment_name>/lib
-ll libcrypto.so
-(You might see "libcrypto.so -> libcrypto.so.1.1")
+ll libcrypto.so (Then you might see "libcrypto.so -> libcrypto.so.1.1")
 ln -s libcrypto.so.1.1 libcrypto.so.1.0.0
+```
