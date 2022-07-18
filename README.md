@@ -24,7 +24,7 @@ The reads can be paired-end reads or single-end reads. For paired-end reads, two
 
 The ouput folders and files will be generated in the output directory folder you specify (the same directory of your input files by default if not specified).
 
-The final output file -- <mark>pilon_out.fasta</mark> is the final improved scaffold of the original scaffold.
+The final output file -- ```pilon_out.fasta``` is the final improved scaffold of the original scaffold.
 
 # Annotation
 
