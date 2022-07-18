@@ -20,6 +20,11 @@ The reads can be paired-end reads or single-end reads. For paired-end reads, two
 
 ## Usage
 
+Command line example:
+```bash
+-1 /home/VirSeqImprover/input/read1.fastq -2 /home/VirSeqImprover/input/read2.fastq -scaffold /home/VirSeqImprover/input/scaffold.fasta -o /home/VirSeqImprover/output
+```
+
 ## Output
 
 The ouput folders and files will be generated in the output directory folder you specify. (If not specified, it will be the same directory of your input files by default.)
