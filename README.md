@@ -24,6 +24,7 @@ Command line example:
 ```bash
 -1 /home/VirSeqImprover/input/read1.fastq -2 /home/VirSeqImprover/input/read2.fastq -scaffold /home/VirSeqImprover/input/scaffold.fasta -o /home/VirSeqImprover/output
 ```
+For all the files and directory, full paths are recommended in the input.
 
 ## Output
 
@@ -37,7 +38,7 @@ The final output file -- ```pilon_out.fasta``` is the final improved scaffold of
 
 2. When the job is done, download the ```out.emapper.decorated.gff``` and ```out.emapper.annotations``` files, use them to generate two separated annotation tables (.csv), including the annotated and unannotated genes by running ```ann.py```.
 
-Command line:
+Command line example:
 ```bash
 python ann.py
 ./out.emapper.annotations
