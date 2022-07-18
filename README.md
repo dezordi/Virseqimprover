@@ -66,4 +66,4 @@ cd anaconda3/envs/<environment_name>/lib
 ll libcrypto.so (Then you might see "libcrypto.so -> libcrypto.so.1.1")
 ln -s libcrypto.so.1.1 libcrypto.so.1.0.0
 ```
-3. In case you do not have permission to run shell files due to privacy issues, use command ```chmod 777 ***.sh``` to solve it.
+3. In case you do not have the permission to run the shell file, use command ```chmod 777 ***.sh``` to solve it.
