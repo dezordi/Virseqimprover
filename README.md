@@ -7,7 +7,7 @@ An integrated pipeline for error-correction, extension, and annotation of viral 
 Use conda install to install VirSeqImprover.
 
 ```bash
-conda install virseqimprover
+conda install virseqimprover --channel haoqiusong
 ```
 
 # Run VirSeqImprover
