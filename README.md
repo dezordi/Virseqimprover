@@ -9,7 +9,7 @@ Use conda install to install VirSeqImprover package.
 ```bash
 conda install virseqimprover --channel haoqiusong
 ```
-This will help you install all the dependent tools (e.g. SPAdes, Bowtie2, etc.) and solve all of the potential dependency problems you could have.
+This will help you install the dependent tools (e.g. SPAdes, Bowtie2, etc.) and solve potential dependency problems you might have.
 
 # Run VirSeqImprover
 
@@ -66,4 +66,5 @@ cd anaconda3/envs/<environment_name>/lib
 ll libcrypto.so (Then you might see "libcrypto.so -> libcrypto.so.1.1")
 ln -s libcrypto.so.1.1 libcrypto.so.1.0.0
 ```
-3. In case you do not have the permission to run the shell file, use command ```chmod 777 ***.sh``` to solve it.
+
+3. In case you do not have the permission to run the shell file, use command ```chmod 777 ***.sh```.
