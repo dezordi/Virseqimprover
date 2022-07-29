@@ -36,7 +36,7 @@ The final output file -- ```pilon_out.fasta``` is the final improved scaffold of
 
 # Annotation example
 
-1. After applying VirSeqImprover to the viral scaffold, use an online tool eggNOG-mapper (http://eggnog-mapper.embl.de/) to annotate viral genes. On the website, choose "Metagenomic" as the data kind, Prodigal as the gene prediction method, then upload the improved scaffold file, and choose "Viruses - 10239" as the taxonomic scope.
+1. After applying VirSeqImprover to the viral scaffold, use an online tool eggNOG-Mapper (http://eggnog-mapper.embl.de/) to annotate viral genes. On the website, choose "Metagenomic" as the data kind, Prodigal as the gene prediction method, then upload the improved scaffold file, and choose "Viruses - 10239" as the taxonomic scope.
 
 2. When the job is done, download the ```out.emapper.decorated.gff``` and ```out.emapper.annotations``` files, use them to generate two separated annotation tables (.csv), including the annotated and unannotated genes by running ```ann.py```.
 
