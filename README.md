@@ -1,17 +1,17 @@
-# VirSeqImprover
+# Virseqimprover
 
 An integrated pipeline for error-correction, extension, and annotation of viral contigs to recover error-free full genomes of viruses and phages by polishing and extending draft viral assemblies.
 
 # Installation
 
-Use conda install to install VirSeqImprover package.
+Use conda install to install Virseqimprover package.
 
 ```bash
-conda install virseqimprover --channel haoqiusong
+conda install Virseqimprover --channel haoqiusong
 ```
 This will help you install the dependent tools (e.g. SPAdes, Bowtie2, etc.) and solve potential dependency problems you might have.
 
-# Run VirSeqImprover
+# Run Virseqimprover
 
 ## Input
 
@@ -23,8 +23,8 @@ The reads can be paired-end reads or single-end reads. For paired-end reads, two
 
 Command line example:
 ```bash
-python virseqimprover.py
--1 /home/VirSeqImprover/input/read1.fastq (-2 /home/VirSeqImprover/input/read2.fastq) -scaffold /home/VirSeqImprover/input/scaffold.fasta -o /home/VirSeqImprover/output
+python Virseqimprover.py
+-1 /home/Virseqimprover/input/read1.fastq (-2 /home/Virseqimprover/input/read2.fastq) -scaffold /home/Virseqimprover/input/scaffold.fasta -o /home/Virseqimprover/output
 ```
 Using full paths for all the files and directories mentioned in the input are highly recommended.
 
@@ -36,7 +36,7 @@ The final output file -- ```pilon_out.fasta``` is the final improved contig of t
 
 # Annotation example
 
-1. After applying VirSeqImprover to the viral contig, use an online tool eggNOG-Mapper (http://eggnog-mapper.embl.de/) to annotate viral genes. On the website, choose "Metagenomic" as the data kind, Prodigal as the gene prediction method, then upload the improved contig file, and choose "Viruses - 10239" as the taxonomic scope.
+1. After applying Virseqimprover to the viral contig, use an online tool eggNOG-Mapper (http://eggnog-mapper.embl.de/) to annotate viral genes. On the website, choose "Metagenomic" as the data kind, Prodigal as the gene prediction method, then upload the improved contig file, and choose "Viruses - 10239" as the taxonomic scope.
 
 2. When the job is done, download the ```out.emapper.decorated.gff``` and ```out.emapper.annotations``` files, use them to generate two separated annotation tables (.csv), including the annotated and unannotated genes by running ```ann.py```.
 
@@ -56,7 +56,7 @@ Command lines:
 ```bash
 conda create -n <new_environment_name>
 conda activate <new_environment_name>
-conda install virseqimprover --channel haoqiusong
+conda install Virseqimprover --channel haoqiusong
 ```
 
 2. In case you meet a problem for Samtools ("samtools: error while loading shared libraries: libcrypto.so.1.0.0: cannot open shared object file: No such file or directory"), use the following command lines to solve it:
