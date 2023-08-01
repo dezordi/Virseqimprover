@@ -4,9 +4,9 @@ An integrated pipeline for error-correction, extension, and annotation of viral 
 
 # Web server
 
-Researchers are welcome to use the tool through our web server (http://virchecker.cs.vt.edu/virseqimprover).
+Researchers are welcome to use the tool easily through our web server (http://virchecker.cs.vt.edu/virseqimprover).
 
-# Installation
+# Conda installation
 
 Use conda install to install Virseqimprover package.
 
@@ -15,7 +15,7 @@ conda install Virseqimprover --channel haoqiusong
 ```
 This will help you install the dependent tools (e.g. SPAdes, Bowtie2, etc.) and solve potential dependency problems you might have.
 
-# Run Virseqimprover
+# Run Virseqimprover on your own machine
 
 ## Input
 
