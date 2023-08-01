@@ -2,6 +2,10 @@
 
 An integrated pipeline for error-correction, extension, and annotation of viral contigs to recover error-free full genomes of viruses and phages by polishing and extending draft viral assemblies.
 
+# Web server
+
+Researchers are welcome to use the tool through our web server (http://virchecker.cs.vt.edu/virseqimprover).
+
 # Installation
 
 Use conda install to install Virseqimprover package.
