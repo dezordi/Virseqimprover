@@ -25,10 +25,10 @@ The reads can be paired-end reads or single-end reads. For paired-end reads, two
 
 ## Usage
 
-Command line example:
+To run Virseqimprover from the command line, type
 ```bash
 python Virseqimprover.py
--1 /home/Virseqimprover/input/read1.fastq (-2 /home/Virseqimprover/input/read2.fastq) -scaffold /home/Virseqimprover/input/scaffold.fasta -o /home/Virseqimprover/output
+-1 /home/Virseqimprover/input/read1.fastq (-2 /home/Virseqimprover/input/read2.fastq) -scaffold /home/Virseqimprover/input/scaffold.fasta -o <output_dir>
 ```
 Using full paths for all the files and directories mentioned in the input are highly recommended.
 
