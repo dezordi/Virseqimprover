@@ -15,7 +15,7 @@ conda install Virseqimprover --channel haoqiusong
 ```
 This will help you install the dependent tools (e.g. SPAdes, Bowtie2, etc.) and solve potential dependency problems you might have.
 
-# Run Virseqimprover on your own machine
+# Run Virseqimprover from command line
 
 ## Input
 
@@ -25,14 +25,28 @@ The reads can be paired-end reads or single-end reads. For paired-end reads, two
 
 ## Usage
 
-To run Virseqimprover from the command line, type
+To run Virseqimprover from command line, type
 ```bash
 python Virseqimprover.py
 -1 <first_read_file_dir> (-2 <second_read_file_dir>) -scaffold <sequence_file_dir> -o <output_dir>
 ```
 We highly recommend to use full paths of all the files and directories in the input.
 
-### Basic options
+### Options
+
+```-o <output_dir>``` Specify the output directory. (Required!)
+
+```-1 <first_read_file_dir>``` Specify the first read file. (Required!)
+
+```-2 <second_read_file_dir>``` Specify the second read file. (Required only for paired-end reads!)
+
+```-scaffold <sequence_file_dir>``` Specify the sequence that you want to correct & extend. (Required!)
+
+```-spadeskmer <int>``` Specify the k-mer size used in SPAdes.
+
+```-minIdentityCircular <int>``` Specify the minimum identity value needed to check circularity. (Default: 95(%).)
+
+```-minSuspiciousLen <int>``` Specify the minimum length of a suspicious region. (Default: 1000(bp).)
 
 ## Output
 
