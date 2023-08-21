@@ -28,9 +28,11 @@ The reads can be paired-end reads or single-end reads. For paired-end reads, two
 To run Virseqimprover from the command line, type
 ```bash
 python Virseqimprover.py
--1 /home/Virseqimprover/input/read1.fastq (-2 /home/Virseqimprover/input/read2.fastq) -scaffold /home/Virseqimprover/input/scaffold.fasta -o <output_dir>
+-1 <first_read_file_dir> (-2 <second_read_file_dir>) -scaffold <sequence_file_dir> -o <output_dir>
 ```
-Using full paths for all the files and directories mentioned in the input are highly recommended.
+We highly recommend to use full paths of all the files and directories in the input.
+
+### Basic options
 
 ## Output
 
