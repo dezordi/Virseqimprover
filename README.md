@@ -4,7 +4,7 @@ An integrated pipeline for error-correction, extension, and annotation of viral 
 
 # Web server
 
-Researchers are welcome to use the tool easily through our web server (http://virchecker.cs.vt.edu/virseqimprover).
+Researchers are welcome to use the tool easily through our [web server](http://virchecker.cs.vt.edu/virseqimprover).
 
 # Conda installation
 
