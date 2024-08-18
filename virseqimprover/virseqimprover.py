@@ -2,16 +2,45 @@ import subprocess
 import os
 import math
 import datetime
+import sys
 
-read1 = ""
-read2 = ""
-outputDir = ""
-scaffold = ""
+args = sys.argv
+sid = args[1]
+outputDir = "/home/lqzhang/virseqimprover_server/Samples/" + sid
 spadesKmerlen = "default"
 minOverlapCircular = 5000
 minIdentityCircular = 95
 salmonReadFraction = 0
 minSuspiciousLen = 1000
+global avgReadLen
+avgReadLen = 0
+
+n_fastq = 0
+n_fq = 0
+tem_fi = []
+for images in os.listdir(outputDir):
+    if (images.endswith(".fastq") and images[0] != '.'):
+        n_fastq += 1
+        tem_fi.append(images)
+    elif (images.endswith(".fq") and images[0] != '.'):
+        n_fq += 1
+        tem_fi.append(images)
+if len(tem_fi) == 1:
+    if n_fastq == 0 and n_fq == 1:
+        read1 = "/home/lqzhang/virseqimprover_server/Samples/" + sid + '/' + tem_fi[0]
+        read2 = ""
+    elif n_fastq == 1 and n_fq == 0:
+        read1 = "/home/lqzhang/virseqimprover_server/Samples/" + sid + '/' + tem_fi[0]
+        read2 = ""
+elif len(tem_fi) == 2:
+    read1 = "/home/lqzhang/virseqimprover_server/Samples/" + sid + '/' + tem_fi[0]
+    read2 = "/home/lqzhang/virseqimprover_server/Samples/" + sid + '/' + tem_fi[1]
+tem_fi2 = ""
+for images in os.listdir(outputDir):
+    if (images.endswith(".fasta") or images.endswith(".fa")):
+        if images[0] != '.':
+            tem_fi2 = images
+scaffold = "/home/lqzhang/virseqimprover_server/Samples/" + sid + '/' + tem_fi2
 
 
 def getReadLen():
@@ -31,7 +60,6 @@ def getReadLen():
     reader = subprocess.check_output(cmd, shell=True)
     reader = reader.decode()
     str_val = reader.replace("\n", "")
-    global avgReadLen
     avgReadLen = float(str_val)
 
     if avgReadLen == 0:
@@ -84,8 +112,8 @@ def runAlignment():
                   + "rm -r salmon-index\n" \
                   + "rm -r salmon-res\n" \
                   + "rm salmon-mapped.sam\n" \
-                  + "salmon index -t scaffold-start-end.fasta -i salmon-index\n" \
-                  + "salmon quant -i salmon-index -l A " \
+                  + "LD_PRELOAD=/lib/x86_64-linux-gnu/libpthread.so.0:/lib/x86_64-linux-gnu/librt.so.1 salmon index -t scaffold-start-end.fasta -i salmon-index\n" \
+                  + "LD_PRELOAD=/lib/x86_64-linux-gnu/libpthread.so.0:/lib/x86_64-linux-gnu/librt.so.1 salmon quant -i salmon-index -l A " \
                   + "-r " + read1 + " -o salmon-res --writeMappings -p 16 --quasiCoverage " \
                   + str(salmonReadFraction) \
                   + " | samtools view -bS - | samtools view -h -F 0x04 - > salmon-mapped.sam\n")
@@ -95,8 +123,8 @@ def runAlignment():
                   + "rm -r salmon-index\n" \
                   + "rm -r salmon-res\n" \
                   + "rm salmon-mapped.sam\n" \
-                  + "salmon index -t scaffold-start-end.fasta -i salmon-index\n" \
-                  + "salmon quant -i salmon-index -l A " \
+                  + "LD_PRELOAD=/lib/x86_64-linux-gnu/libpthread.so.0:/lib/x86_64-linux-gnu/librt.so.1 salmon index -t scaffold-start-end.fasta -i salmon-index\n" \
+                  + "LD_PRELOAD=/lib/x86_64-linux-gnu/libpthread.so.0:/lib/x86_64-linux-gnu/librt.so.1 salmon quant -i salmon-index -l A " \
                   + "-1 " + read1 + " -2 " + read2 + " -o salmon-res --writeMappings -p 16 --quasiCoverage " \
                   + str(salmonReadFraction) \
                   + "| samtools view -bS - | samtools view -h -F 0x04 - > salmon-mapped.sam\n")
@@ -301,7 +329,7 @@ def growScaffoldWithAssembly():
         else:
             extendContig = False
 
-        if extendContig and iteration > 2000:
+        if extendContig and iteration > 100:
             extendContig = False
 
 
@@ -513,7 +541,7 @@ def checkCircularity():
     intReadLen = int(avgReadLen)
     if scaffoldLength > (intReadLen*2):
         scaffoldId = results[0].strip()
-        bw1.write(str(scaffoldId) + "\t" + '0' + "\t" + str(scaffoldLength - (intReadLen*2)) + "\n")
+        bw1.write(str(scaffoldId) + "\t" + str(0) + "\t" + str(scaffoldLength - (intReadLen*2)) + "\n")
         bw2.write(str(scaffoldId) + "\t" + str(scaffoldLength - (intReadLen*2)) + "\t" + str(scaffoldLength-intReadLen) + "\n")
     br.close()
     bw1.close()
@@ -587,8 +615,8 @@ def checkCircularity():
         intReadLen = int(avgReadLen)
         if(scaffoldLength > (intReadLen*2)):
             scaffoldId = results[0].strip()
-            bw1.write(scaffoldId + "\t" + 0 + "\t" + subjectStart + "\n")
-            bw2.write(scaffoldId + "\t" + (scaffoldLength - (intReadLen*2) - subjectStart) + "\t" + (scaffoldLength-(intReadLen*2)) + "\n")
+            bw1.write(str(scaffoldId) + "\t" + str(0) + "\t" + str(subjectStart) + "\n")
+            bw2.write(str(scaffoldId) + "\t" + str(scaffoldLength - (intReadLen*2) - subjectStart) + "\t" + str(scaffoldLength-(intReadLen*2)) + "\n")
         br.close()
         bw1.close()
         bw2.close()
@@ -903,43 +931,9 @@ def extendOneScaffold():
             extendContig = False
 
 
-args = input()
-args = args.split(" ")
+#print("Finished parsing input arguments.")
+#getReadLen()
 
-if len(args) == 0:
-    print("Error: Arguments missing.")
-    exit(0)
-else:
-    for i in range(len(args)):
-        if args[i][0] == "-":
-            if (i+1) >= len(args):
-                print("Error: Missing argument after " + args[i] + ".")
-                exit(0)
-            else:
-                if args[i] == "-o":
-                    outputDir = args[i + 1]
-                elif args[i] == "-1":
-                    read1 = args[i + 1]
-                elif args[i] == "-2":
-                    read2 = args[i + 1]
-                elif args[i] == "-scaffold":
-                    scaffold = args[i + 1]
-                elif args[i] == "-spadeskmer":
-                    spadesKmerlen = args[i + 1]
-                elif args[i] == "-minOverlapCircular":
-                    minOverlapCircular = int(args[i + 1])
-                elif args[i] == "-minIdentityCircular":
-                    minIdentityCircular = int(args[i + 1])
-                elif args[i] == "-readFrac":
-                    salmonReadFraction = float(args[i + 1])
-                elif args[i] == "-minSuspiciousLen":
-                    minSuspiciousLen = int(args[i + 1])
-                else:
-                    print("Error: Invalid argument.")
-                    exit(0)
-
-print("Finished parsing input arguments.")
-getReadLen()
 
 print("Started growing scaffold.")
 extendOneScaffold()
