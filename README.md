@@ -54,6 +54,10 @@ The ouput folders and files will be generated in the output directory folder you
 
 The final output file -- ```pilon_out.fasta``` is the final improved contig of the original contig.
 
+## Optional configurations
+
+Users are able to use their own hyperparameters when running Virseqimprover. Please directly change the program ```virseqimprover.py``` from line 11 ~ 14, including the minimal suspicious length, minimal identity threshold to determine circular regions, and so on.
+
 # Annotation example
 
 1. After applying Virseqimprover to the viral contig, use an online tool eggNOG-Mapper (http://eggnog-mapper.embl.de/) to annotate viral genes. On the website, choose "Metagenomic" as the data kind, Prodigal as the gene prediction method, then upload the improved contig file, and choose "Viruses - 10239" as the taxonomic scope.
