@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="virseqimprover",
-    version="1.2",
+    version="1.2.0",
     author="Haoqiu Song",
     author_email="haoqiu@vt.edu",
     description="An integrated pipeline for error-correction, extension, and annotation of viral scaffolds.",
@@ -18,4 +18,13 @@ setuptools.setup(
         "Operating System :: OS Independent",
         "License :: OSI Approved :: MIT License",
     ),
+     install_requires=[
+        'click',
+        'setuptools'
+    ],
+    entry_points={
+        'console_scripts': [
+            'virseqimprover = virseqimprover.virseqimprover:main',
+        ],
+    },
 )

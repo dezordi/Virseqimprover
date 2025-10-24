@@ -11,8 +11,11 @@ Researchers are welcome to use the tool easily through our [web server](http://v
 Use conda install to install Virseqimprover package.
 
 ```bash
-conda install Virseqimprover --channel haoqiusong
+micromamba install -c bioconda -c conda-forge haoqiusong::virseqimprover
+git clone https://github.com/dezordi/Virseqimprover
+pip install .
 ```
+
 This will help you install the dependent tools (e.g. SPAdes, Bowtie2, etc.) and solve potential dependency problems you might have.
 
 # Run Virseqimprover from command line
@@ -27,36 +30,20 @@ The reads can be paired-end reads or single-end reads. For paired-end reads, two
 
 To run Virseqimprover from command line, type
 ```bash
-python Virseqimprover.py
--1 <first_read_file_dir> (-2 <second_read_file_dir>) -scaffold <sequence_file_dir> -o <output_dir>
+virseqimprover \
+    -i <absolute_path_to_contigs> \
+    -r1 <absolute_path_to_fastq_R1> \
+    -r2 <absolute_path_to_fastq_R2> \
+    -o <absolute_path_to_output_directory>
 ```
-We highly recommend to use full paths of all the files and directories in the input.
 
-### Options
-
-```-o <output_dir>``` Specify the output directory. (Required!)
-
-```-1 <first_read_file_dir>``` Specify the first read file. (Required!)
-
-```-2 <second_read_file_dir>``` Specify the second read file. (Required only for paired-end reads!)
-
-```-scaffold <sequence_file_dir>``` Specify the sequence that you want to correct & extend. (Required!)
-
-```-spadeskmer <int>``` Specify the k-mer size used in SPAdes.
-
-```-minIdentityCircular <int>``` Specify the minimum identity value needed to check circularity. (Default: 95(%).)
-
-```-minSuspiciousLen <int>``` Specify the minimum length of a suspicious region. (Default: 1000(bp).)
+The current version only works with absolute paths. 
 
 ## Output
-
-The ouput folders and files will be generated in the output directory folder you specify. (If not specified, it will be the same directory of your input files by default.)
 
 The final output file -- ```pilon_out.fasta``` is the final improved contig of the original contig.
 
 ## Optional configurations
-
-Users are able to use their own hyperparameters when running Virseqimprover. Please directly change the program ```virseqimprover.py``` from line 11 ~ 14, including the minimal suspicious length, minimal identity threshold to determine circular regions, and so on.
 
 # Annotation example
 
